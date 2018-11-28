@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<title>Web Page Design</title>
+<head>
+
+<table style="width:36%">
+  <caption align="left"><font color = "#0000FF">Choose number of <span style="font-weight:bold">People</span></font></caption>
+  <tr>
+    <td width = "60%"><font color= "#0000FF">Rooms</font></td>
+    <td width = "5%"><button class = "button minus" id = "rooms_bu" onclick = "buttonAction_dec(this.id)" >-</button></td> 
+    <td width = "5%"><label for ="rooms_label" id= "rooms_la">1</label></td>
+    <td width = "5%"><button class = "button add" id = "rooms_bu" onclick = "buttonAction_inc(this.id)">+</button></td>
+  </tr>
+  <tr>
+    <td width = "60%"><font color= "#0000FF">Adult</font></td>
+    <td width = "5%"><button class = "button minus" id = "adult_bu" onclick = "buttonAction_dec(this.id)"  >-</button></td> 
+    <td width = "5%"><label for="adult_label" id = "adult_la">1</label></td>
+    <td width = "5%"><button class = "button add" id = "adult_bu" onclick = "buttonAction_inc(this.id)">+</button></td>
+  </tr>
+  <tr>
+    <td><font color= "#0000FF">Children</font></td>
+    <td><button class = "button minus" id ="Children_bu" onclick = "buttonAction_dec(this.id)" >-</button></td> 
+    <td><label for="Children_label" id = "Children_la">0</label></td>
+    <td><button class = "button add" id ="Children_bu" onclick = "buttonAction_inc(this.id)">+</button></td>
+  </tr>
+  
+</table>
+
+
+<style>
+
+.button {
+    
+    border: none;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    height : 50% ;
+    margin: 4px 4px;
+}
+
+.minus {background-color: #404CA5;border-radius: 100%;}
+.add {background-color: #DA2A1B;border-radius: 100%;}
+
+
+table {
+  
+  border-collapse: collapse;
+}
+table, tr { 
+  border: 1px solid black;
+}
+
+
+
+label{
+  width : 11px;
+}
+</style>
+<script type="text/javascript">
+  
+
+ 
+var rooms_va =1
+var Children_va =0
+var adult_var = 1
+
+function buttonAction_dec(clicked_id){
+
+if (clicked_id == "rooms_bu"){
+if(rooms_va > 1 && rooms_va <= 5){
+    document.getElementById("rooms_la").innerText = rooms_va -1
+    rooms_va = rooms_va-1
+    while (4*rooms_va < adult_var + Children_va){
+        if (Children_va >0){
+           Children_va = Children_va - 1
+        }
+        else{
+           adult_var = adult_var - 1
+        }
+       
+    }
+    document.getElementById("Children_la").innerText = Children_va
+    document.getElementById("adult_la").innerText = adult_var
+    
+    
+}
+}
+
+if (clicked_id == "Children_bu"){
+
+   if(Children_va >0){
+      document.getElementById("Children_la").innerText = Children_va -1
+      Children_va = Children_va-1
+    }
+}
+
+if (clicked_id == "adult_bu"){
+   if(adult_var > rooms_va){
+     document.getElementById("adult_la").innerText = adult_var -1
+     adult_var = adult_var - 1
+    }
+  
+}
+
+}
+
+function buttonAction_inc(clicked_id){
+
+if (clicked_id == "rooms_bu"){
+
+if(rooms_va >= 1 && rooms_va < 5){
+    document.getElementById("rooms_la").innerText = rooms_va +1
+    document.getElementById("adult_la").innerText = adult_var +1
+    adult_var = adult_var + 1
+    rooms_va = rooms_va +1
+}
+
+}
+
+if (clicked_id == "Children_bu"){
+
+   if (Children_va < 4*rooms_va - adult_var){
+   
+      document.getElementById("Children_la").innerText = Children_va +1
+      Children_va = Children_va + 1
+   }
+
+}
+
+if (clicked_id == "adult_bu"){
+
+  if(adult_var >= rooms_va && adult_var < 4*rooms_va - Children_va){
+
+      document.getElementById("adult_la").innerText = adult_var +1
+      adult_var = adult_var + 1
+   }
+}
+}
+
+</script>
+</head>
+<body>
+</body>
+</html>
