@@ -1,11 +1,12 @@
 # UI-programming-problem
 Creating the table where user can select the no.of rooms and persons for booking 
 output of the program look like table having three columns look like below
- 
-     Choose number of People
-  Rooms                       - 1 +
-  Adult                       - 1 +
-  Children                    - 0 +
+
+          Choose number of People
+          
+     Rooms                       - 1 +
+     Adult                       - 1 +
+     Children                    - 0 +
   
   Where + and - are clickable buttons
   
@@ -33,3 +34,4 @@ adult_va for adult count reference
 To run the program:
 
 just copy the code to anyfile.html format and open the file with any browser
+ 
